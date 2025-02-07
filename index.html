@@ -1,22 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
 </head>
-
 <body>
-        <form id="login-form">
-            <label for="username">PSEUDO:</label>
-            <input id="username" type="text">
-            <br>
-            <label for="password">MOT DE PASSE:</label>
-            <input id="password" type="password">
-            <br>
-            <button type="submit">Login</button>
-        </form>
+    <div id="root"></div>
     <script type="module">
         import { h, createApp } from "./node_modules/vue/dist/vue.esm-browser.prod.js";
 
@@ -34,32 +24,33 @@
                 }
             },
             render() {
-                return h('form', {
-                    onSubmit: this.submitForm
-                }, [
-                    h('label', { for: 'username' }, 'Username:'),
-                    h('input', {
-                        id: 'username',
-                        type: 'text',
-                        value: this.username,
-                        onInput: event => this.username = event.target.value
-                    }),
-                    h('br'),
-                    h('label', { for: 'password' }, 'Password:'),
-                    h('input', {
-                        id: 'password',
-                        type: 'password',
-                        value: this.password,
-                        onInput: event => this.password = event.target.value
-                    }),
-                    h('br'),
-                    h('button', { type: 'submit' }, 'Login')
+                return h('div', {}, [
+                    h('form', {
+                        onSubmit: this.submitForm
+                    }, [
+                        h('label', { for: 'username' }, 'Username:'),
+                        h('input', {
+                            id: 'username',
+                            type: 'text',
+                            value: this.username,
+                            onInput: event => this.username = event.target.value
+                        }),
+                        h('br'),
+                        h('label', { for: 'password' }, 'Password:'),
+                        h('input', {
+                            id: 'password',
+                            type: 'password',
+                            value: this.password,
+                            onInput: event => this.password = event.target.value
+                        }),
+                        h('br'),
+                        h('button', { type: 'submit' }, 'Login')
+                    ])
                 ]);
             }
         };
 
-        createApp(Login).mount('#login-form');
+        createApp(Login).mount('#root');
     </script>
 </body>
-
 </html>
